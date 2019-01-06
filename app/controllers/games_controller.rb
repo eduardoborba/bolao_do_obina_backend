@@ -3,8 +3,8 @@ class GamesController < ApplicationController
 
   # GET /games
   def index
-    @games = Game.joins(:visitor)
-                 .joins(:home)
+    @games = Game.eager_load(:visitor)
+                 .eager_load(:home)
                  .all
 
     @games_json = @games.map do |game|

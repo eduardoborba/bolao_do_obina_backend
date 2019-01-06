@@ -3,9 +3,21 @@ class GamesController < ApplicationController
 
   # GET /games
   def index
-    @games = Game.all
+    @games = Game.joins(:visitor)
+                 .joins(:home)
+                 .all
 
-    render json: @games
+    @games_json = @games.map do |game|
+      {
+        id: game.id,
+        visitor_name: game.visitor.name,
+        visitor_score: game.visitor_score,
+        home_name: game.home.name,
+        home_score: game.home_score
+      }
+    end
+
+    render json: @games_json
   end
 
   # GET /games/1

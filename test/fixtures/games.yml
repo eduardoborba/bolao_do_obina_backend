@@ -1,17 +1,23 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
+  id: 1
   home_id: 1
   visitor_id: 1
   home_score: 1
   visitor_score: 1
   date_time: 2018-02-17 21:45:45
   championship_id: 1
+  bet_league_id: 1
+  round_id: 1
 
 two:
+  id: 2
   home_id: 1
   visitor_id: 1
   home_score: 1
   visitor_score: 1
   date_time: 2018-02-17 21:45:45
   championship_id: 1
+  bet_league_id: 1
+  round_id: 1

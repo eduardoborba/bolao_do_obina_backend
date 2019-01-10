@@ -12,7 +12,7 @@ class GamesControllerTest < ActionDispatch::IntegrationTest
 
   test "should create game" do
     assert_difference('Game.count') do
-      post games_url, params: { game: { championship_id: @game.championship_id, date_time: @game.date_time, home_id: @game.home_id, home_score: @game.home_score, visitor_id: @game.visitor_id, visitor_score: @game.visitor_score } }, as: :json
+      post games_url, params: { game: { championship_id: @game.championship_id, date_time: @game.date_time, home_id: @game.home_id, home_score: @game.home_score, visitor_id: @game.visitor_id, visitor_score: @game.visitor_score, round_id: @game.round_id, bet_league_id: @game.bet_league_id } }, as: :json
     end
 
     assert_response 201
@@ -24,7 +24,7 @@ class GamesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update game" do
-    patch game_url(@game), params: { game: { championship_id: @game.championship_id, date_time: @game.date_time, home_id: @game.home_id, home_score: @game.home_score, visitor_id: @game.visitor_id, visitor_score: @game.visitor_score } }, as: :json
+    patch game_url(@game), params: { game: { championship_id: @game.championship_id, date_time: @game.date_time, home_id: @game.home_id, home_score: @game.home_score, visitor_id: @game.visitor_id, visitor_score: @game.visitor_score, round_id: @game.round_id, bet_league_id: @game.bet_league_id } }, as: :json
     assert_response 200
   end
 

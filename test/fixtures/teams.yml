@@ -1,11 +1,11 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
+flamengo:
   id: 1
-  name: MyString
-  country: MyString
+  name: Flamengo
+  country: Brasil
 
-two:
+vasco:
   id: 2
-  name: MyString
-  country: MyString
+  name: Vasco
+  country: Brasil

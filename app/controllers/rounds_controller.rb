@@ -10,14 +10,16 @@ class RoundsController < ApplicationController
 
   # GET /rounds/1
   def show
-    render json: @round
+    service = RoundsService.new(@round)
+    render json: { round: @round, games: service.games_by_round }
   end
 
   # POST /rounds
   def create
     @round = Round.new(round_params)
+    service = RoundsService.new(@round)
 
-    if @round.save
+    if @round.save && service.create_round_games(params)
       render json: @round, status: :created, location: @round
     else
       render json: @round.errors, status: :unprocessable_entity

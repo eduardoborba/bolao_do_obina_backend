@@ -11,7 +11,7 @@ class RoundsController < ApplicationController
   # GET /rounds/1
   def show
     service = RoundsService.new(@round)
-    render json: { round: @round, games: service.games_by_round }
+    render json: { round: @round, games: service.games }
   end
 
   # POST /rounds
@@ -19,7 +19,7 @@ class RoundsController < ApplicationController
     @round = Round.new(round_params)
     service = RoundsService.new(@round)
 
-    if @round.save && service.create_round_games(params)
+    if @round.save && service.create!(params)
       render json: @round, status: :created, location: @round
     else
       render json: @round.errors, status: :unprocessable_entity
@@ -28,7 +28,9 @@ class RoundsController < ApplicationController
 
   # PATCH/PUT /rounds/1
   def update
-    if @round.update(round_params)
+    service = RoundsService.new(@round)
+
+    if @round.update(round_params) && service.update!(params)
       render json: @round
     else
       render json: @round.errors, status: :unprocessable_entity

@@ -2,7 +2,7 @@ require 'test_helper'
 
 class PlayersControllerTest < ActionDispatch::IntegrationTest
   setup do
-    @player = players(:one)
+    @player = players(:obina)
   end
 
   test "should get index" do

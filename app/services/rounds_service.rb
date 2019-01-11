@@ -5,7 +5,7 @@ class RoundsService
     self.round = round
   end
 
-  def games_by_round
+  def games
     Game.joins(:home)
         .joins(:visitor)
         .where(round: round)
@@ -21,7 +21,7 @@ class RoundsService
         end
   end
 
-  def create_round_games(params)
+  def create!(params)
     params[:games].each_with_index do |game_param, index|
       Game.create!(
         home_id: game_param[:home_id],
@@ -35,7 +35,7 @@ class RoundsService
     true
   end
 
-  def update_round_games(params)
+  def update!(params)
     params[:games].each do |game_param|
       game = @round.games.find(game_param[:id])
       game.home_id = game_param[:home_id] if game_param[:home_id].present?

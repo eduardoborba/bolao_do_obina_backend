@@ -47,7 +47,20 @@ class RoundsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update round" do
-    patch round_url(@round), params: { round: { bet_league_id: @round.bet_league_id, blocked_after: @round.blocked_after, number_of_games: @round.number_of_games, round_number: @round.round_number, status_id: @round.status_id } }, as: :json
+    patch round_url(@round), params: {
+        round: {
+          status_id: 'finished'
+        },
+        games: [{
+          id: @game_one.id,
+          home_score: 2,
+          visitor_score: 0
+        }, {
+          id: @game_two.id,
+          home_score: 2,
+          visitor_score: 1
+        }]
+      }, as: :json
     assert_response 200
   end
 

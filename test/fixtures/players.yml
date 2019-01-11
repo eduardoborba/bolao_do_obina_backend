@@ -1,13 +1,13 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
+obina:
   id: 1
-  name: MyString
-  email: MyString
+  name: João "Obina" Morinigo
+  email: joaoobina@gmail.com
   password: MyString
 
-two:
+eduardo:
   id: 2
-  name: MyString
-  email: MyString
+  name: Eduardo Borba
+  email: eduardojoseborba@gmail.com
   password: MyString

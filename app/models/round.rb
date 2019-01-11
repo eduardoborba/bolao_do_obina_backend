@@ -20,6 +20,6 @@ class Round < ApplicationRecord
   end
 
   def fill_status_id
-    self.status_id = Round.statuses[:active]
+    self.status_id = 'active'
   end
 end

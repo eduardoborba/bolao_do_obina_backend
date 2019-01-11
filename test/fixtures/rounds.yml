@@ -3,7 +3,7 @@
 one:
   id: 1
   bet_league_id: 1
-  number_of_games: 1
+  number_of_games: 2
   blocked_after: 2019-01-09 22:40:39
   round_number: 1
   status_id: 60
@@ -11,7 +11,7 @@ one:
 two:
   id: 2
   bet_league_id: 1
-  number_of_games: 1
+  number_of_games: 0
   blocked_after: 2019-01-09 22:40:39
-  round_number: 1
+  round_number: 2
   status_id: 60

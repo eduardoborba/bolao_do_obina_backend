@@ -10,7 +10,8 @@ class BetLeaguesController < ApplicationController
 
   # GET /bet_leagues/1
   def show
-    render json: @bet_league
+    service = BetLeaguesService.new(@bet_league)
+    render json: { bet_league: @bet_league, player_scores: service.player_scores, rounds: service.rounds }
   end
 
   # POST /bet_leagues

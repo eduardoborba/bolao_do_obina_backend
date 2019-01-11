@@ -10,10 +10,10 @@ class RoundsServiceTest < ActiveSupport::TestCase
     @vasco = teams(:vasco)
   end
 
-  test '#games_by_round should list games by round with proper attributes' do
+  test '#games should list games by round with proper attributes' do
     service = RoundsService.new(@round)
 
-    games_by_round = service.games_by_round
+    games_by_round = service.games
     assert_equal 2, games_by_round.count
 
     assert_equal 1, games_by_round.first[:id]
@@ -29,11 +29,11 @@ class RoundsServiceTest < ActiveSupport::TestCase
     assert_equal 0, games_by_round.second[:visitor_score]
   end
 
-  test '#create_round_games should create games to the round based on the params' do
+  test '#create! should create games to the round based on the params' do
     service = RoundsService.new(@second_round)
 
     assert_difference('Game.count', +2) do
-      service.create_round_games({
+      service.create!({
         games: [{
           home_id: @flamengo.id,
           visitor_id: @vasco.id
@@ -62,11 +62,11 @@ class RoundsServiceTest < ActiveSupport::TestCase
 
   end
 
-  test '#update_round_games should update permitted attributes properly' do
+  test '#update! should update permitted attributes properly' do
     service = RoundsService.new(@round)
 
     assert_no_difference('Game.count') do
-      service.update_round_games({
+      service.update!({
         games: [{
           id: @game_one.id,
           home_score: 2,

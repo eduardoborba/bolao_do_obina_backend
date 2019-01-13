@@ -17,6 +17,8 @@ class RoundsController < ApplicationController
   # POST /rounds
   def create
     @round = Round.new(round_params)
+    @round.status_id = Round.statuses[:active]
+    @round.round_number = @round.bet_league.rounds.count + 1
     service = RoundsService.new(@round)
 
     if @round.save && service.create!(params)

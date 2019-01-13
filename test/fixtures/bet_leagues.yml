@@ -2,8 +2,12 @@
 
 one:
   id: 1
-  name: MyString
+  name: Minha Liga
+  owner_id: 2
+  status_id: 60
 
 two:
   id: 2
-  name: MyString
+  name: Liga do Obina
+  owner_id: 1
+  status_id: 60

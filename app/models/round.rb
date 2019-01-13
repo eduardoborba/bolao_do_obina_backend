@@ -10,16 +10,19 @@ class Round < ApplicationRecord
 
   validates :bet_league_id, :number_of_games, :blocked_after, :status_id, presence: true
 
-  before_validation :fill_round_number, only: :create
-  before_validation :fill_status_id, only: :create
-
-  private
-
-  def fill_round_number
-    self.round_number = self.bet_league.rounds.count + 1
+  def pending?(player)
+    self.active? && Bet.where(player: player, game: self.games).count != self.number_of_games
   end
 
-  def fill_status_id
-    self.status_id = 'active'
+  def active?
+    self.status_id == Round.statuses[:active]
+  end
+
+  def blocked?
+    self.status_id == Round.statuses[:blocked]
+  end
+
+  def finished?
+    self.status_id == Round.statuses[:finished]
   end
 end

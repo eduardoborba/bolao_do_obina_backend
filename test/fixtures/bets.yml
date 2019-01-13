@@ -11,7 +11,7 @@ one:
 
 two:
   id: 2
-  game_id: 1
+  game_id: 2
   player_id: 1
   player_score: 1
   bet_league_id: 1

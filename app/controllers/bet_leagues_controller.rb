@@ -3,9 +3,10 @@ class BetLeaguesController < ApplicationController
 
   # GET /bet_leagues
   def index
-    @bet_leagues = BetLeague.all
+    @bet_leagues = BetLeague.joins(:players)
+                            .where(players: { id: params[:player_id] })
 
-    render json: @bet_leagues
+    render json: { bet_leagues: @bet_leagues }
   end
 
   # GET /bet_leagues/1
@@ -17,6 +18,7 @@ class BetLeaguesController < ApplicationController
   # POST /bet_leagues
   def create
     @bet_league = BetLeague.new(bet_league_params)
+    @bet_league.status_id = BetLeague.statuses[:active]
 
     if @bet_league.save
       render json: @bet_league, status: :created, location: @bet_league
@@ -47,6 +49,6 @@ class BetLeaguesController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def bet_league_params
-      params.require(:bet_league).permit(:name)
+      params.require(:bet_league).permit(:name, :owner_id)
     end
 end

@@ -12,7 +12,8 @@ class BetLeaguesControllerTest < ActionDispatch::IntegrationTest
 
     response = JSON.parse(@response.body)
 
-    assert_equal 1, response["bet_leagues"].count
+    assert_equal 1, response.count
+    assert_equal 'Minha Liga #1', response[0]['display_name']
   end
 
   test "should create bet_league" do

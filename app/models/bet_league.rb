@@ -12,6 +12,8 @@ class BetLeague < ApplicationRecord
     finished: 80
   }
 
+  attribute :display_name
+
   def display_name
     "#{self.name} \##{self.id}"
   end

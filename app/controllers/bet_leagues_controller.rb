@@ -6,7 +6,7 @@ class BetLeaguesController < ApplicationController
     @bet_leagues = BetLeague.joins(:players)
                             .where(players: { id: params[:player_id] })
 
-    render json: { bet_leagues: @bet_leagues }
+    render json: @bet_leagues
   end
 
   # GET /bet_leagues/1

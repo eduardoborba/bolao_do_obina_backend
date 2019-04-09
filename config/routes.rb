@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  mount_devise_token_auth_for 'Player', at: 'auth'
   resources :rounds
   resources :teams
   resources :championships
